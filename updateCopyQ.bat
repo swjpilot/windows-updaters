@@ -1,6 +1,7 @@
 @echo off
 pushd %TEMP%
-curl -s https://api.github.com/repos/hluk/CopyQ/releases/latest | grep "browser_download_url.*exe" | cut -d : -f 2,3 | sed -e "s/^[ \t]*//" -e s/^.// -e s/.$// | wget -i -
-FOR /F %A IN ('ls copyq*.exe') DO start /wait %~A /INFFILE=$HOME\NextCloud\Scripts\copyqinstall.inf
-del -y copyq*.exe
+curl -s https://api.github.com/repos/hluk/CopyQ/releases/latest | grep "browser_download_url.*exe" | cut -d : -f 2,3 | sed -e "s/^[ \t]*//" -e s/^.// -e s/.$// | wget -O copyq.exe -i -
+REM FOR /F %%A IN ('dir /S copyq*.exe') DO call %%~A /INFFILE=%HOMEDRIVE%%HOMEPATH%\NextCloud\Scripts\copyqinstall.inf
+start copyq.exe /INFFILE=%HOMEDRIVE%%HOMEPATH%\NextCloud\Scripts\copyqinstall.inf /S
+del copyq*.exe
 popd
