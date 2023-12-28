@@ -1,8 +1,8 @@
 @echo off
 setlocal
 CALL :GETPARENT PARENT
-IF /I "%PARENT%" == "powershell" GOTO :ISPOWERSHELL
-IF /I "%PARENT%" == "pwsh" GOTO :ISPOWERSHELL
+REM IF /I "%PARENT%" == "powershell" GOTO :ISPOWERSHELL
+REM IF /I "%PARENT%" == "pwsh" GOTO :ISPOWERSHELL
 endlocal
 
 pushd %HOMEDRIVE%%HOMEPATH%\Nextcloud\Development\git\windows-updaters\
@@ -24,5 +24,5 @@ popd
 GOTO :EOF
 
 :ISPOWERSHELL
-powershell -Command 'Start-Process -FilePath C:\Windows\System32\CMD.exe -ArgumentList "/C $Home\Nextcloud\Development\git\windows-updates\updateApps.bat" -verb runas -wait'
+c:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe -Command {Start-Process -verb runas -wait -FilePath C:\Windows\System32\CMD.exe -ArgumentList "/C %USERPROFILE%\Nextcloud\Development\git\windows-updaters\updateApps.bat"}
 exit /b 1
