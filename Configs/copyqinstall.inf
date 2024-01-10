@@ -1,0 +1,8 @@
+[Setup]
+Lang=en
+Dir=C:\Program Files (x86)\CopyQ
+Group=CopyQ
+NoIcons=0
+SetupType=full
+Components=program,translations,plugins,plugins\text,plugins\images,plugins\notes,plugins\encrypted,plugins\fakevim,plugins\synchronize,plugins\tags,plugins\pinned
+Tasks=startup
